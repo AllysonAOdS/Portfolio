@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Articles on Home</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Articles on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spotify daily top 200 songs</title>
+      <link>https://example.com/post/spotifytop200/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/spotifytop200/</guid>
+      <description>On this article I will explore the following dataset available on kaggle:
+ Spotify daily top 200 songs with genres 2017-2021  It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.
+Here a quick glance at the data as is:
+  Position  Track.Name  Artist  Streams  Date  Genre      1  Starboy  The Weeknd  3135625  2017-01-01  [‘canadian pop’, ‘canadian contemporary r&amp;amp;b’, ‘pop’]    2  Closer  The Chainsmokers  3015525  2017-01-01  [‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]    3  Let Me Love You  DJ Snake  2545384  2017-01-01  [‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]    4  Rockabye (feat.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Spotify daily top 200 songs | Home</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="On this article I will explore the following dataset available on kaggle:
+ Spotify daily top 200 songs with genres 2017-2021  It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.
+Here a quick glance at the data as is:
+  Position  Track.Name  Artist  Streams  Date  Genre      1  Starboy  The Weeknd  3135625  2017-01-01  [‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]    2  Closer  The Chainsmokers  3015525  2017-01-01  [‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]    3  Let Me Love You  DJ Snake  2545384  2017-01-01  [‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]    4  Rockabye (feat.">
+    <meta name="generator" content="Hugo 0.89.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Spotify daily top 200 songs" />
+<meta property="og:description" content="On this article I will explore the following dataset available on kaggle:
+ Spotify daily top 200 songs with genres 2017-2021  It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.
+Here a quick glance at the data as is:
+  Position  Track.Name  Artist  Streams  Date  Genre      1  Starboy  The Weeknd  3135625  2017-01-01  [‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]    2  Closer  The Chainsmokers  3015525  2017-01-01  [‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]    3  Let Me Love You  DJ Snake  2545384  2017-01-01  [‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]    4  Rockabye (feat." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/spotifytop200/" /><meta property="article:section" content="post" />
+
+<meta property="og:site_name" content="Home" />
+
+<meta itemprop="name" content="Spotify daily top 200 songs">
+<meta itemprop="description" content="On this article I will explore the following dataset available on kaggle:
+ Spotify daily top 200 songs with genres 2017-2021  It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.
+Here a quick glance at the data as is:
+  Position  Track.Name  Artist  Streams  Date  Genre      1  Starboy  The Weeknd  3135625  2017-01-01  [‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]    2  Closer  The Chainsmokers  3015525  2017-01-01  [‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]    3  Let Me Love You  DJ Snake  2545384  2017-01-01  [‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]    4  Rockabye (feat.">
+
+<meta itemprop="wordCount" content="880">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spotify daily top 200 songs"/>
+<meta name="twitter:description" content="On this article I will explore the following dataset available on kaggle:
+ Spotify daily top 200 songs with genres 2017-2021  It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.
+Here a quick glance at the data as is:
+  Position  Track.Name  Artist  Streams  Date  Genre      1  Starboy  The Weeknd  3135625  2017-01-01  [‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]    2  Closer  The Chainsmokers  3015525  2017-01-01  [‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]    3  Let Me Love You  DJ Snake  2545384  2017-01-01  [‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]    4  Rockabye (feat."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/SpotifyLogo.png');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Home
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contacts page">
+              Contacts
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/allyson-silva-95aa3a22/?locale=en_US" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/AllysonAOdS" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        ARTICLES
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://example.com/post/spotifytop200/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://example.com/post/spotifytop200/&amp;text=Spotify%20daily%20top%20200%20songs" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://example.com/post/spotifytop200/&amp;title=Spotify%20daily%20top%20200%20songs" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Spotify daily top 200 songs</h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<p>On this article I will explore the following dataset available on kaggle:</p>
+<ul>
+<li><a href="https://www.kaggle.com/ivannatarov/spotify-daily-top-200-songs-with-genres-20172021">Spotify daily top 200 songs with genres 2017-2021</a></li>
+</ul>
+<p>It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.</p>
+<p>Here a quick glance at the data as is:</p>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Position
+</th>
+<th style="text-align:left;">
+Track.Name
+</th>
+<th style="text-align:left;">
+Artist
+</th>
+<th style="text-align:right;">
+Streams
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Genre
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Starboy
+</td>
+<td style="text-align:left;">
+The Weeknd
+</td>
+<td style="text-align:right;">
+3135625
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Closer
+</td>
+<td style="text-align:left;">
+The Chainsmokers
+</td>
+<td style="text-align:right;">
+3015525
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Let Me Love You
+</td>
+<td style="text-align:left;">
+DJ Snake
+</td>
+<td style="text-align:right;">
+2545384
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Rockabye (feat. Sean Paul &amp; Anne-Marie)
+</td>
+<td style="text-align:left;">
+Clean Bandit
+</td>
+<td style="text-align:right;">
+2356604
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘uk dance’, ‘dance pop’, ‘uk funky’, ‘tropical house’, ‘pop dance’, ‘post-teen pop’, ‘edm’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+One Dance
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2259887
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Fake Love
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2137437
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> For this exercise 2021 will not be included, as the year had not ended when closing this page.</p>
+<div id="first-impressions" class="section level2">
+<h2>First impressions</h2>
+<p>The amount of streams has been increasing over the years as willingnes to pay for the service also increases and anti-piracy measures are being enforced in most countries.</p>
+<p>We see more artists reaching the top 200, always with many cool songs to move us.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-1.png" width="33%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-2.png" width="33%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-3.png" width="33%" /></p>
+<p>These artists made it to the top 3 of each year</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-3-1.png" width="100%" /></p>
+</div>
+<div id="genres-in-a-cloud" class="section level2">
+<h2>Genres in a cloud</h2>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>It’s hard to see the forest for the trees, so let’s pick the top 3 Genres for each year</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-5-1.png" width="70%" /></p>
+</div>
+<div id="what-else" class="section level2">
+<h2>What else?</h2>
+<div id="extending-the-dataset" class="section level3">
+<h3>Extending the dataset</h3>
+<div id="scraping-the-web" class="section level4">
+<h4>Scraping the web</h4>
+<p>I realised in the dataset there was no indication to the duration of the track, so I decided to write a little webscraping code to get this info from the <a href="www.last.fm">Last.fm</a> database.</p>
+<p>Here the code I wrote if you’re into techy stuff. If not, just scroll down =P</p>
+<pre class="r"><code># Import the necessary libraries 
+library(rvest)
+library(dplyr)
+library(stringr)
+
+# Get the Track and Artists names
+DurationList &lt;- unique(spotify[c(&quot;Track.Name&quot;,&quot;Artist&quot;)])
+DurationList$Duration &lt;-  0
+
+# Replace some characters
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name, &quot; &quot;, &quot;+&quot;)
+DurationList$Artist &lt;- str_replace_all(DurationList$Artist, &quot; &quot;, &quot;+&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;&#39;&quot;,&quot;%27&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;\&quot;&quot;,&quot;%28&quot;)
+
+# Run over the Last.fm search pages and retrieve the Duration of each Track
+for (i in 1:5149){
+  tryCatch({
+    link = paste0(&quot;https://www.last.fm/search?q=&quot;, DurationList[i,1], &quot;+&quot;, DurationList[i,2])
+    page = read_html(link)
+    DurationList[i,3] &lt;- page %&gt;% html_nodes(&quot;.chartlist-duration&quot;) %&gt;% .[1] %&gt;% html_text() %&gt;%
+      str_replace_all(&quot; &quot;, &quot;&quot;) %&gt;% str_replace_all(&quot;\\n&quot;, &quot;&quot;)
+    print(paste0(i, &quot; &quot;,DurationList[i,2], &quot; &quot;,DurationList[i,1],&quot; &quot;, DurationList[i,3]))
+  }, error = function(e){cat(&quot;ERROR :&quot;,conditionMessage(e), &quot;\n&quot;)})
+}
+
+# Get the duration in seconds as the mm:ss format wouldn&#39;t allow for calculations
+DurationList$DurationSec &lt;- str_split(DurationList$Duration, pattern = &quot;:&quot;, simplify = TRUE)
+DurationList$DurationSec &lt;- as.numeric(DurationList$DurationSec[,1])*60 + as.numeric(DurationList$DurationSec[,2])
+
+# Now revert the character replacements
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name, &quot;\\+&quot;, &quot; &quot;)
+DurationList$Artist &lt;- str_replace_all(DurationList$Artist, &quot;\\+&quot;, &quot; &quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;%27&quot;,&quot;&#39;&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;%28&quot;,&quot;\&quot;&quot;)
+
+# Then expand the original dataset by joining with the newly harvested data
+tempos &lt;- left_join(spotify,lista, by=c(&quot;Track.Name&quot;, &quot;Artist&quot;))
+# Remove some of the NAs from the scraping
+tempos &lt;- tempos[!is.na(tempos$DurationSec),]</code></pre>
+and here a glance at the final result
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Position
+</th>
+<th style="text-align:left;">
+Track.Name
+</th>
+<th style="text-align:left;">
+Artist
+</th>
+<th style="text-align:right;">
+Streams
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Genre
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:left;">
+Duration
+</th>
+<th style="text-align:right;">
+DurationSec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Starboy
+</td>
+<td style="text-align:left;">
+The Weeknd
+</td>
+<td style="text-align:right;">
+3135625
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:50
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Closer
+</td>
+<td style="text-align:left;">
+The Chainsmokers
+</td>
+<td style="text-align:right;">
+3015525
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+4:06
+</td>
+<td style="text-align:right;">
+246
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Let Me Love You
+</td>
+<td style="text-align:left;">
+DJ Snake
+</td>
+<td style="text-align:right;">
+2545384
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:25
+</td>
+<td style="text-align:right;">
+205
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Rockabye (feat. Sean Paul &amp; Anne-Marie)
+</td>
+<td style="text-align:left;">
+Clean Bandit
+</td>
+<td style="text-align:right;">
+2356604
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘uk dance’, ‘dance pop’, ‘uk funky’, ‘tropical house’, ‘pop dance’, ‘post-teen pop’, ‘edm’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+4:10
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+One Dance
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2259887
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2:54
+</td>
+<td style="text-align:right;">
+174
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Fake Love
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2137437
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:27
+</td>
+<td style="text-align:right;">
+207
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="songs-that-wont-last-forever" class="section level3">
+<h3>Songs that won’t last forever</h3>
+<p>So now let’s check the newly acquired values and how they relate to the other variables.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-8-1.png" width="70%" /></p>
+<p>That looks quite cluttered, so let’s build a quick histogram to see how many times a given track length occurs in the new dataset.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-9-1.png" width="70%" /></p>
+<p>It may be interesting to break down the density per year.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-10-1.png" width="70%" /></p>
+<p>Looks like the average track length has been decreasing in the year on year comparison, the following boxplots may make it clearer:</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-11-1.png" width="70%" /></p>
+<p>An here the explicit year on year decrease in the average length of the tracks:</p>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Average_Length
+</th>
+<th style="text-align:right;">
+YoY
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+216.6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:right;">
+205.3
+</td>
+<td style="text-align:right;">
+-5.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+203.5
+</td>
+<td style="text-align:right;">
+-0.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:right;">
+196.4
+</td>
+<td style="text-align:right;">
+-3.6
+</td>
+</tr>
+</tbody>
+</table>
+<p>So all in all, we have more songs in the daily Top 200 streamed songs on Spotify, however the average duration has been shrinking over the past four years.</p>
+</div>
+<div id="what-are-the-odds" class="section level3">
+<h3>What are the odds?</h3>
+<p>Only 1.05 % of the songs make it to the very top, and 8.39 % enter the top 10. But does it relate in any way with the length of the track? Looking at the charts below, seems plausible to assume that.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-13-1.png" width="50%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-13-2.png" width="50%" /></p>
+<p>I went on and calculated the probabilities of a given track length to join the top 10 for at least one day then plotted that into the chart below:</p>
+<p>Hope you enjoyed this overview. The code used for building this report can be found on my <a href="https://github.com/AllysonAOdS/SpotifyTop200">GitHub</a>.</p>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy;  Home 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/allyson-silva-95aa3a22/?locale=en_US" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/AllysonAOdS" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
