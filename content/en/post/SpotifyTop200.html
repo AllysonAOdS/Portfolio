@@ -1,0 +1,547 @@
+---
+title: "Spotify daily top 200 songs"
+date: "10 11 2021"
+featured_image: "images/SpotifyLogo.png"
+omit_header_text: true
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    toc: true
+  
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<p>On this article I will explore the following dataset available on kaggle:</p>
+<ul>
+<li><a href="https://www.kaggle.com/ivannatarov/spotify-daily-top-200-songs-with-genres-20172021">Spotify daily top 200 songs with genres 2017-2021</a></li>
+</ul>
+<p>It contains information on the daily top 200 tracks listened to by users of the Spotify digital platform around the world.</p>
+<p>Here a quick glance at the data as is:</p>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Position
+</th>
+<th style="text-align:left;">
+Track.Name
+</th>
+<th style="text-align:left;">
+Artist
+</th>
+<th style="text-align:right;">
+Streams
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Genre
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Starboy
+</td>
+<td style="text-align:left;">
+The Weeknd
+</td>
+<td style="text-align:right;">
+3135625
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Closer
+</td>
+<td style="text-align:left;">
+The Chainsmokers
+</td>
+<td style="text-align:right;">
+3015525
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Let Me Love You
+</td>
+<td style="text-align:left;">
+DJ Snake
+</td>
+<td style="text-align:right;">
+2545384
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Rockabye (feat. Sean Paul &amp; Anne-Marie)
+</td>
+<td style="text-align:left;">
+Clean Bandit
+</td>
+<td style="text-align:right;">
+2356604
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘uk dance’, ‘dance pop’, ‘uk funky’, ‘tropical house’, ‘pop dance’, ‘post-teen pop’, ‘edm’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+One Dance
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2259887
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Fake Love
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2137437
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> For this exercise 2021 will not be included, as the year had not ended when closing this page.</p>
+<div id="first-impressions" class="section level2">
+<h2>First impressions</h2>
+<p>The amount of streams has been increasing over the years as willingnes to pay for the service also increases and anti-piracy measures are being enforced in most countries.</p>
+<p>We see more artists reaching the top 200, always with many cool songs to move us.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-1.png" width="33%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-2.png" width="33%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-2-3.png" width="33%" /></p>
+<p>These artists made it to the top 3 of each year</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-3-1.png" width="100%" /></p>
+</div>
+<div id="genres-in-a-cloud" class="section level2">
+<h2>Genres in a cloud</h2>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>It’s hard to see the forest for the trees, so let’s pick the top 3 Genres for each year</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-5-1.png" width="70%" /></p>
+</div>
+<div id="what-else" class="section level2">
+<h2>What else?</h2>
+<div id="extending-the-dataset" class="section level3">
+<h3>Extending the dataset</h3>
+<div id="scraping-the-web" class="section level4">
+<h4>Scraping the web</h4>
+<p>I realised in the dataset there was no indication to the duration of the track, so I decided to write a little webscraping code to get this info from the <a href="www.last.fm">Last.fm</a> database.</p>
+<p>Here the code I wrote if you’re into techy stuff. If not, just scroll down =P</p>
+<pre class="r"><code># Import the necessary libraries 
+library(rvest)
+library(dplyr)
+library(stringr)
+
+# Get the Track and Artists names
+DurationList &lt;- unique(spotify[c(&quot;Track.Name&quot;,&quot;Artist&quot;)])
+DurationList$Duration &lt;-  0
+
+# Replace some characters
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name, &quot; &quot;, &quot;+&quot;)
+DurationList$Artist &lt;- str_replace_all(DurationList$Artist, &quot; &quot;, &quot;+&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;&#39;&quot;,&quot;%27&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;\&quot;&quot;,&quot;%28&quot;)
+
+# Run over the Last.fm search pages and retrieve the Duration of each Track
+for (i in 1:5149){
+  tryCatch({
+    link = paste0(&quot;https://www.last.fm/search?q=&quot;, DurationList[i,1], &quot;+&quot;, DurationList[i,2])
+    page = read_html(link)
+    DurationList[i,3] &lt;- page %&gt;% html_nodes(&quot;.chartlist-duration&quot;) %&gt;% .[1] %&gt;% html_text() %&gt;%
+      str_replace_all(&quot; &quot;, &quot;&quot;) %&gt;% str_replace_all(&quot;\\n&quot;, &quot;&quot;)
+    print(paste0(i, &quot; &quot;,DurationList[i,2], &quot; &quot;,DurationList[i,1],&quot; &quot;, DurationList[i,3]))
+  }, error = function(e){cat(&quot;ERROR :&quot;,conditionMessage(e), &quot;\n&quot;)})
+}
+
+# Get the duration in seconds as the mm:ss format wouldn&#39;t allow for calculations
+DurationList$DurationSec &lt;- str_split(DurationList$Duration, pattern = &quot;:&quot;, simplify = TRUE)
+DurationList$DurationSec &lt;- as.numeric(DurationList$DurationSec[,1])*60 + as.numeric(DurationList$DurationSec[,2])
+
+# Now revert the character replacements
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name, &quot;\\+&quot;, &quot; &quot;)
+DurationList$Artist &lt;- str_replace_all(DurationList$Artist, &quot;\\+&quot;, &quot; &quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;%27&quot;,&quot;&#39;&quot;)
+DurationList$Track.Name &lt;- str_replace_all(DurationList$Track.Name,&quot;%28&quot;,&quot;\&quot;&quot;)
+
+# Then expand the original dataset by joining with the newly harvested data
+tempos &lt;- left_join(spotify,lista, by=c(&quot;Track.Name&quot;, &quot;Artist&quot;))
+# Remove some of the NAs from the scraping
+tempos &lt;- tempos[!is.na(tempos$DurationSec),]</code></pre>
+and here a glance at the final result
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Position
+</th>
+<th style="text-align:left;">
+Track.Name
+</th>
+<th style="text-align:left;">
+Artist
+</th>
+<th style="text-align:right;">
+Streams
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Genre
+</th>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Month
+</th>
+<th style="text-align:left;">
+Duration
+</th>
+<th style="text-align:right;">
+DurationSec
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Starboy
+</td>
+<td style="text-align:left;">
+The Weeknd
+</td>
+<td style="text-align:right;">
+3135625
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘canadian pop’, ‘canadian contemporary r&amp;b’, ‘pop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:50
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Closer
+</td>
+<td style="text-align:left;">
+The Chainsmokers
+</td>
+<td style="text-align:right;">
+3015525
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘pop dance’, ‘tropical house’, ‘edm’, ‘electropop’, ‘dance pop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+4:06
+</td>
+<td style="text-align:right;">
+246
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Let Me Love You
+</td>
+<td style="text-align:left;">
+DJ Snake
+</td>
+<td style="text-align:right;">
+2545384
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘electronic trap’, ‘dance pop’, ‘edm’, ‘pop dance’, ‘pop rap’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:25
+</td>
+<td style="text-align:right;">
+205
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Rockabye (feat. Sean Paul &amp; Anne-Marie)
+</td>
+<td style="text-align:left;">
+Clean Bandit
+</td>
+<td style="text-align:right;">
+2356604
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘pop’, ‘uk dance’, ‘dance pop’, ‘uk funky’, ‘tropical house’, ‘pop dance’, ‘post-teen pop’, ‘edm’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+4:10
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+One Dance
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2259887
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2:54
+</td>
+<td style="text-align:right;">
+174
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Fake Love
+</td>
+<td style="text-align:left;">
+Drake
+</td>
+<td style="text-align:right;">
+2137437
+</td>
+<td style="text-align:left;">
+2017-01-01
+</td>
+<td style="text-align:left;">
+[‘toronto rap’, ‘canadian pop’, ‘canadian hip hop’, ‘rap’, ‘pop rap’, ‘hip hop’]
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3:27
+</td>
+<td style="text-align:right;">
+207
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="songs-that-wont-last-forever" class="section level3">
+<h3>Songs that won’t last forever</h3>
+<p>So now let’s check the newly acquired values and how they relate to the other variables.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-8-1.png" width="70%" /></p>
+<p>That looks quite cluttered, so let’s build a quick histogram to see how many times a given track length occurs in the new dataset.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-9-1.png" width="70%" /></p>
+<p>It may be interesting to break down the density per year.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-10-1.png" width="70%" /></p>
+<p>Looks like the average track length has been decreasing in the year on year comparison, the following boxplots may make it clearer:</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-11-1.png" width="70%" /></p>
+<p>An here the explicit year on year decrease in the average length of the tracks:</p>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:right;">
+Average_Length
+</th>
+<th style="text-align:right;">
+YoY
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+216.6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:right;">
+205.3
+</td>
+<td style="text-align:right;">
+-5.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+203.5
+</td>
+<td style="text-align:right;">
+-0.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:right;">
+196.4
+</td>
+<td style="text-align:right;">
+-3.6
+</td>
+</tr>
+</tbody>
+</table>
+<p>So all in all, we have more songs in the daily Top 200 streamed songs on Spotify, however the average duration has been shrinking over the past four years.</p>
+</div>
+<div id="what-are-the-odds" class="section level3">
+<h3>What are the odds?</h3>
+<p>Only 1.05 % of the songs make it to the very top, and 8.39 % enter the top 10. But does it relate in any way with the length of the track? Looking at the charts below, seems plausible to assume that.</p>
+<p><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-13-1.png" width="50%" /><img src="/en/post/SpotifyTop200_files/figure-html/unnamed-chunk-13-2.png" width="50%" /></p>
+<p>I went on and calculated the probabilities of a given track length to join the top 10 for at least one day then plotted that into the chart below:</p>
+<p>Hope you enjoyed this overview. The code used for building this report can be found on my <a href="https://github.com/AllysonAOdS/SpotifyTop200">GitHub</a>.</p>
+</div>
+</div>
