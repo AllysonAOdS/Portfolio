@@ -21,7 +21,7 @@ library(RColorBrewer)
 library(wordcloud)
 library(kableExtra)
 
-spotify <- read.csv2("~/Documents/OneDrive/Musik/SpotifyTop200/SpotifyDailyTop200-2017_21.csv", sep="#")
+spotify <- read.csv2("~/Documents/OneDrive/Git/SpotifyTop200/SpotifyDailyTop200-2017_21.csv", sep="#")
 #spotify <- read.csv2("~/OneDrive/Musik/SpotifyDailyTop200-2017_21.csv", sep="#")
 
 ```
@@ -204,7 +204,7 @@ tempos <- tempos[!is.na(tempos$DurationSec),]
 and here a glance at the final result
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(readr)
-lista <- read.csv2("~/Documents/OneDrive/Musik/SpotifyTop200/lista3.csv")
+lista <- read.csv2("~/Documents/OneDrive/Git/SpotifyTop200/lista3.csv")
 library(stringr)
 lista$DurationSec <- str_split(lista$Duration, pattern = ":", simplify = TRUE)
 lista$DurationSec <- as.numeric(lista$DurationSec[,1])*60 + as.numeric(lista$DurationSec[,2])
