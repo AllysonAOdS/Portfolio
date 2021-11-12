@@ -2,6 +2,7 @@
 title: "Spotify daily top 200 songs"
 date: "10 11 2021"
 featured_image: "images/SpotifyLogo.png"
+omit_header_text: true
 output: 
   prettydoc::html_pretty:
     theme: cayman
@@ -59,7 +60,7 @@ spotify<-subset(spotify, Year < 2021)
 
 aggregate(spotify$Streams, by=list(spotify$Year), FUN=sum)%>%
   mutate(x = x/1000000000) %>%
-  ggplot(aes(factor(Group.1),x,alpha=0.3, fill=factor(Group.1)))+
+  ggplot(aes(factor(Group.1),x,alpha=0.1, fill=factor(Group.1)))+
   geom_col()+
   geom_text(aes(label=round(x, 1)), size= 4, position = position_stack(vjust = 0.5))+
   labs(title = "Billion of Streams each year...", y=NULL, x=NULL)+
@@ -70,7 +71,7 @@ aggregate(spotify$Streams, by=list(spotify$Year), FUN=sum)%>%
 spotify %>%
   group_by(Year) %>%
   summarise(ArtistCount = n_distinct(Artist)) %>%
-  ggplot(aes(factor(Year), ArtistCount, alpha=0.3, fill=factor(Year))) +
+  ggplot(aes(factor(Year), ArtistCount, alpha=0.1, fill=factor(Year))) +
   geom_col()+
   geom_text(aes(label=ArtistCount), size= 4, position = position_stack(vjust = 0.5))+
   labs(title = "... of talented Artists...", y=NULL, x=NULL)+
@@ -81,7 +82,7 @@ spotify %>%
 spotify %>%
   group_by(Year) %>%
   summarise(TrackCount = n_distinct(Track.Name))%>%
-  ggplot(aes(factor(Year), TrackCount, alpha=0.3, fill=factor(Year))) +
+  ggplot(aes(factor(Year), TrackCount, alpha=0.1, fill=factor(Year))) +
   geom_col()+
   geom_text(aes(label=TrackCount), size= 4, position = position_stack(vjust = 0.5))+
   labs(title = "... with inspiring songs", y=NULL, x=NULL)+
@@ -353,17 +354,21 @@ tempos %>%
 I went on and calculated the probabilities of a given track length to join the top 10 for at least one day then plotted that into the chart below:
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-Probs <- tempos %>%
-  group_by(DurationSec) %>%
-  summarise(HighestPosition = min(Position), Count= n()) %>%
-  filter(HighestPosition<=10)%>%
-  mutate(Probability = (Count / 254071)*100) %>%
-  ggplot(aes(DurationSec, Probability)) +
-  geom_point(aes(alpha=20)) +
-  geom_density_2d(size = 0.25, colour = "grey", alpha=0.5) +
+tempos %>%
+    group_by(DurationSec) %>%
+    summarise(HighestPosition = min(Position), Count= n()) %>%
+    filter(HighestPosition<=10)%>%
+    mutate(Probability = (Count / 254071)*100, Cols = round(Probability, digits=2)) %>%
+    group_by(Cols) %>%
+    summarise(avgLength = mean(DurationSec), Count = sum(Count)) %>%
+    ggplot(aes(avgLength, Cols)) +
+    geom_point(aes(alpha=0.05)) +
+  geom_density_2d_filled(size = 0.25, colour = "grey", alpha=0.5) +
   theme_light() +
-  labs(title = "Probability distribution", subtitle = "Tracks that got into the top 10", y="Probability", x="Length (s)") +
-  theme(text = element_text(size = 10),legend.position = "none", axis.ticks.x = element_blank(), axis.ticks.y = element_blank(), panel.grid = element_blank(), plot.caption.position =  "plot", plot.caption = element_text(hjust = 0, face= "italic"))
+  labs(title = "Probability distribution", subtitle = "Tracks that got into the top 10", y="Probability", x="Average Length (s)") +
+  theme(text = element_text(size = 10),legend.position = "none", panel.grid = element_blank(), plot.caption.position =  "plot", plot.caption = element_text(hjust = 0, face= "italic")) +
+  scale_x_continuous(breaks = seq(0,400,50)) + 
+  scale_y_continuous(breaks = seq(0, 4, 0.5))
 ```
 
 Hope you enjoyed this overview. The code used for building this report can be found on my [GitHub](https://github.com/AllysonAOdS/SpotifyTop200).
